@@ -211,13 +211,13 @@ export class DimensionBigBlueButtonService {
         const widgetCreatorUserId = await MatrixStickerBot.getUserId();
 
         // Add all necessary client variables to the url when loading the widget
+        //
+        // Note that by *not* providing a conferenceUrl to the widget string, the widget
+        // will know to attempt to join the meeting through Dimension's `/getJoinUrl` API.
         const widgetUrl = config.dimension.publicUrl +
             "/widgets/bigbluebutton" +
             "?widgetId=$matrix_widget_id" +
             "&roomId=$matrix_room_id" +
-            // Indicate that we would like to join a meeting created by Dimension, rather than doing so via
-            // a greenlight URL
-            "&createMeeting=true" +
             "&displayName=$matrix_display_name" +
             "&avatarUrl=$matrix_avatar_url" +
             "&userId=$matrix_user_id" +

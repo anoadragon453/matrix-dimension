@@ -18,7 +18,10 @@ export class BigBlueButtonWidgetWrapperComponent extends CapableWidget implement
     public canEmbed = true;
 
     /**
-     * User metadata passed to us by the client
+     * User metadata passed to us by the client.
+     * 
+     * If conferenceUrl is specified (a greenlight URL), the widget will attempt to join the BBB conference
+     * via the link. Otherwise the widget will ask Dimension to create a meeting for it.
      */
     private conferenceUrl: string;
     private displayName: string;
@@ -34,15 +37,7 @@ export class BigBlueButtonWidgetWrapperComponent extends CapableWidget implement
     private joinName: string;
 
     /**
-     * Whether we expect the meeting to be created on command.
-     *
-     * True if we'd like the meeting to be created, false if we have a greenlight URL leading to an existing meeting
-     * and would like Dimension to translate that to a BigBlueButton meeting URL.
-     */
-    private createMeeting: boolean;
-
-    /**
-     * The ID of the room, required if createMeeting is true.
+     * The ID of the room, required if conferenceUrl is not specified.
      */
     private roomId: string;
 
@@ -81,7 +76,6 @@ export class BigBlueButtonWidgetWrapperComponent extends CapableWidget implement
         let params: any = activatedRoute.snapshot.queryParams;
 
         this.roomId = params.roomId;
-        this.createMeeting = params.createMeeting;
         this.conferenceUrl = params.conferenceUrl;
         this.displayName = params.displayName;
         this.avatarUrl = params.avatarUrl;
@@ -92,7 +86,7 @@ export class BigBlueButtonWidgetWrapperComponent extends CapableWidget implement
         // Create a nick to display in the meeting
         this.joinName = `${this.displayName} (${this.userId})`;
 
-        console.log("BigBlueButton: should create meeting: " + this.createMeeting);
+        console.log("BigBlueButton: should create meeting: " + (this.conferenceUrl != undefined));
         console.log("BigBlueButton: will join as: " + this.joinName);
         console.log("BigBlueButton: got room ID: " + this.roomId);
 
@@ -132,7 +126,7 @@ export class BigBlueButtonWidgetWrapperComponent extends CapableWidget implement
         }
 
         // Make a request to Dimension requesting the join URL
-        if (this.createMeeting) {
+        if (this.conferenceUrl) {
             // Ask Dimension to return a URL for joining a meeting that it created
             this.joinThroughDimension();
         } else {

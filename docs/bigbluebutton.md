@@ -116,7 +116,7 @@ on Dimension to retrieve the necessary json contents for the state event. An exa
     "waitForIframeLoad": true,
     "name": "BigBlueButton Conference",
     "avatar_url": "mxc://t2bot.io/be1650140620d8bb61a8cf5baeb05f24a734434c",
-    "url": "https://dimension.example.com/widgets/bigbluebutton?widgetId=$matrix_widget_id&roomId=$matrix_room_id&createMeeting=true&displayName=$matrix_display_name&avatarUrl=$matrix_avatar_url&userId=$matrix_user_id&meetingId=GsmiDReG&meetingPassword=dvKIv7EX&auth=$openidtoken-jwt",
+    "url": "https://dimension.example.com/widgets/bigbluebutton?widgetId=$matrix_widget_id&roomId=$matrix_room_id&&displayName=$matrix_display_name&avatarUrl=$matrix_avatar_url&userId=$matrix_user_id&meetingId=GsmiDReG&meetingPassword=dvKIv7EX&auth=$openidtoken-jwt",
     "data": {
       "title": "Join the conference"
     }
@@ -144,7 +144,7 @@ event. An example widget state event generated from the above looks like:
     "waitForIframeLoad": true,
     "name": "BigBlueButton Conference",
     "avatar_url": "mxc://t2bot.io/be1650140620d8bb61a8cf5baeb05f24a734434c",
-    "url": "https://dimension.example.com/widgets/bigbluebutton?widgetId=$matrix_widget_id&roomId=$matrix_room_id&createMeeting=true&displayName=$matrix_display_name&avatarUrl=$matrix_avatar_url&userId=$matrix_user_id&meetingId=GsmiDReG&meetingPassword=dvKIv7EX&auth=$openidtoken-jwt",
+    "url": "https://dimension.example.com/widgets/bigbluebutton?widgetId=$matrix_widget_id&roomId=$matrix_room_id&&displayName=$matrix_display_name&avatarUrl=$matrix_avatar_url&userId=$matrix_user_id&meetingId=GsmiDReG&meetingPassword=dvKIv7EX&auth=$openidtoken-jwt",
     "data": {
       "title": "Join the conference"
     },
